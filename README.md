@@ -2,6 +2,15 @@
 
 commit-wiz is a utility that summarizes the differences in a Git repository and automatically generates commit comments using OpenAI.
 
+```shell
+$ ./build/commit-wiz
+Loading... -
+The generated commit message is below:
+
+Add commit-wiz utility to automatically generate commit comments using OpenAI
+
+```
+
 ## Features
 
 - Retrieves and summarizes Git repository differences.
