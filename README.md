@@ -49,7 +49,7 @@ If you're using an ARM-based Mac, you can find the binary in the build directory
 ## Usage
 Run the tool to summarize Git differences and generate commit comments.
 ```shell
-git-summary-tool -length 50
+./build/commit-wiz -length 50
 ```
 
 Replace 50 with the desired summary length in tokens.
