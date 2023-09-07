@@ -11,16 +11,23 @@ import (
 func main() {
 	// command line flags
 	summaryLength := flag.Int("l", 50, "Number of tokens in summary")
+	path := flag.String("p", "", "Git repository path(default: current directory)")
 	flag.Parse()
 
 	// get current directory
-	currentDir, err := os.Getwd()
-	if err != nil {
-		panic(err)
+	var dir string
+	if path != nil && *path != "" {
+		cwd, err := os.Getwd()
+		if err != nil {
+			panic(err)
+		}
+		dir = cwd
+	} else {
+		dir = *path
 	}
 
 	// get git diff
-	gitDiff, err := retrieveGitDiff(currentDir)
+	gitDiff, err := retrieveGitDiff(dir)
 	if err != nil {
 		panic(err)
 	}
