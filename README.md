@@ -59,3 +59,6 @@ Set up your OpenAI API key by exporting it as an environment variable:
 ```shell
 export OPENAI_API_KEY=your-api-key-here
 ```
+
+## License
+This project is licensed under the MIT License.
