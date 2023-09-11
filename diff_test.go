@@ -22,8 +22,19 @@ func TestRetrieveGitDiff(t *testing.T) {
 		}
 	}(tempDir)
 
+	cmd := exec.Command("git", "config", "user.email", "action@github.com")
+	err = cmd.Run()
+	if err != nil {
+		t.Fatalf("Error configuring Git user: %v", err)
+	}
+	cmd = exec.Command("git", "config", "user.name", "GitHub Action")
+	err = cmd.Run()
+	if err != nil {
+		t.Fatalf("Error configuring Git user: %v", err)
+	}
+
 	// Initialize a test Git repository
-	cmd := exec.Command("git", "init")
+	cmd = exec.Command("git", "init")
 	cmd.Dir = tempDir
 	err = cmd.Run()
 	if err != nil {
