@@ -43,6 +43,10 @@ func TestRetrieveGitDiff(t *testing.T) {
 		t.Fatalf("Error adding test file to Git: %v", err)
 	}
 
+	cmd = exec.Command("git", "rm", "--cached", "test.txt")
+	cmd.Dir = tempDir
+	err = cmd.Run()
+
 	cmd = exec.Command("git", "commit", "-m", "Initial commit")
 	cmd.Dir = tempDir
 	err = cmd.Run()
