@@ -47,8 +47,8 @@ func TestRetrieveGitDiff(t *testing.T) {
 	cmd = exec.Command("git", "commit", "-m", "Initial commit")
 	cmd.Dir = tempDir
 	err = cmd.Run()
-	gitStatus(tempDir)
 	if err != nil {
+		gitStatus(tempDir)
 		t.Fatalf("Error committing test file: %v", err)
 	}
 
