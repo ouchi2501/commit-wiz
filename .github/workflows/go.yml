@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
