@@ -45,6 +45,7 @@ func TestRetrieveGitDiff(t *testing.T) {
 	cmd = exec.Command("git", "commit", "-m", "Initial commit")
 	cmd.Dir = tempDir
 	err = cmd.Run()
+	gitStatus(tempDir)
 	if err != nil {
 		t.Fatalf("Error committing test file: %v", err)
 	}
@@ -116,4 +117,14 @@ func appendToFile(filePath, text string) error {
 
 func containsSubstring(s, substr string) bool {
 	return strings.Contains(s, substr)
+}
+
+func gitStatus(dir string) {
+	cmd := exec.Command("git", "status")
+	cmd.Dir = dir
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Printf("Error running 'git status': %v\n%s", err, output)
+	}
+	fmt.Printf("Git status:\n%s\n", output)
 }
